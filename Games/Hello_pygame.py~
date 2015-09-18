@@ -1,0 +1,40 @@
+import pygame, sys
+from pygame.locals import *
+
+#Initialization
+pygame.init()
+DISPLAYSURF = pygame.display.set_mode((1200, 600))
+pygame.display.set_caption('Cycloid')
+
+#Settings
+FPS = 30
+fpsClock = pygame.time.Clock()
+
+#Colors
+BLACK = pygame.Color(0, 0, 0)
+PINK = pygame.Color(255, 192, 192)
+WHITE = pygame.Color(255, 255, 255)
+
+DISPLAYSURF.fill(BLACK)
+x = 10
+y = 10
+ball = pygame.image.load('wr.jpg')
+direction = 'right'
+
+#pygame.draw.circle(DISPLAYSURF, PINK, (x, y), 10)
+while True:
+	DISPLAYSURF.fill(BLACK)
+	if x <= 280:
+		x += 5
+	else:
+		x = 10
+
+	DISPLAYSURF.blit(ball, (x, y))
+
+	for event in pygame.event.get():
+		if event.type == QUIT:
+			pygame.quit()
+			sys.quit()
+
+	pygame.display.update()
+	fpsClock.tick(FPS)
